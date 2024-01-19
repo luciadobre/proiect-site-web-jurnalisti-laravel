@@ -39,7 +39,7 @@ class CustomAuthController extends Controller
         $validatedData = $request->validate([
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:2',
-            'role' => 'required|in:journalist,editor,reader',
+            'role' => 'required|in:jurnalist,editor,reader',
         ]);
 
         User::create([
@@ -63,8 +63,8 @@ class CustomAuthController extends Controller
     {
         $user = Auth::user();
         return match ($user->role) {
-            'journalist', 'editor' => redirect()->route('dashboard'),
-            default => redirect('/welcome'),
+            'jurnalist', 'editor' => redirect()->route('dashboard'),
+            default => redirect('/'),
         };
     }
 }

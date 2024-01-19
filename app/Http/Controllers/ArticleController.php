@@ -10,7 +10,12 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::where('author_id', Auth::id())->get();
+        if (Auth::user()->role === 'editor') {
+            $articles = Article::all();
+        } else {
+            $articles = Article::where('author_id', Auth::id())->get();
+        }
+
         return view('articles.index', compact('articles'));
     }
 
@@ -28,7 +33,7 @@ class ArticleController extends Controller
         ]);
 
         $validated['author_id'] = Auth::id();
-        $validated['status'] = 'waiting'; // Default status
+        $validated['status'] = 'in asteptare'; // Default status
 
         Article::create($validated);
 
@@ -63,4 +68,23 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('articles.index')->with('success', 'Articol șters cu succes!');
     }
+
+    public function approve($id)
+    {
+        $article = Article::find($id);
+        $article->status = 'aprobat';
+        $article->save();
+
+        return back()->with('success', 'Articol aprobat.');
+    }
+
+    public function reject($id)
+    {
+        $article = Article::find($id);
+        $article->status = 'respins';
+        $article->save();
+
+        return back()->with('success', 'Articol respins.');
+    }
+
 }

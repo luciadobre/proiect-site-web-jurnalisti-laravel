@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <select name="role" class="form-control" required>
-                                        <option value="journalist">Jurnalist</option>
+                                        <option value="jurnalist">Jurnalist</option>
                                         <option value="editor">Editor</option>
                                         <option value="reader">Cititor</option>
                                     </select>

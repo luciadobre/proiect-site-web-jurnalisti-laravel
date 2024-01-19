@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id');
             $table->text('content');
             $table->string('category');
-            $table->enum('status', ['waiting', 'approved', 'rejected'])->default('waiting');
+            $table->enum('status', ['in asteptare', 'aprobat', 'respins'])->default('in asteptare');
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');

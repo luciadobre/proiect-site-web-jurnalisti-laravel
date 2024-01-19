@@ -18,7 +18,7 @@
                 <select class="form-control" id="category" name="category">
                     <option value="artistic">Artistic</option>
                     <option value="tehnic">Tehnic</option>
-                    <option value="science">Science</option>
+                    <option value="stiinta">Stiinta</option>
                     <option value="moda">Moda</option>
                 </select>
             </div>

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,9 @@ Route::post('logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware('auth');
+});
+
+// Protected Dashboard Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [ArticleController::class, 'index'])->name('dashboard');
+});

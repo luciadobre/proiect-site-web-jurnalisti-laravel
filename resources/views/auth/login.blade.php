@@ -1,4 +1,4 @@
-@extends('auth.layouts')
+@extends('layouts.app')
 
 @section('content')
     <main class="login-form">
@@ -11,13 +11,15 @@
                             <form method="POST" action="{{ route('login.custom') }}">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <input type="text" placeholder="Username" id="username" class="form-control" name="username" required autofocus>
+                                    <input type="text" placeholder="Username" id="username" class="form-control"
+                                           name="username" required autofocus>
                                     @if ($errors->has('username'))
                                         <span class="text-danger">{{ $errors->first('username') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="password" placeholder="parola" id="password" class="form-control" name="password" required>
+                                    <input type="password" placeholder="parola" id="password" class="form-control"
+                                           name="password" required>
                                     @if ($errors->has('password'))
                                         <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif

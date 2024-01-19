@@ -63,9 +63,8 @@ class CustomAuthController extends Controller
     {
         $user = Auth::user();
         return match ($user->role) {
-            'journalist' => redirect()->intended('journalist/dashboard'),
-            'editor' => redirect()->intended('editor/dashboard'),
-            default => redirect()->intended('/'),
+            'journalist', 'editor' => redirect()->route('dashboard'),
+            default => redirect('/welcome'),
         };
     }
 }

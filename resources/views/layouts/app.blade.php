@@ -14,6 +14,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedAuth">
+
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 @if(Auth::guest())
                     <li class="nav-item">
@@ -24,8 +25,9 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}"
-                           onclick="document.getElementById('logout-form').submit();">Log Out</a>
+                        <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Log Out
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

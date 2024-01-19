@@ -27,4 +27,5 @@ Route::get('/', function () {
 // Protected Dashboard Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [ArticleController::class, 'index'])->name('dashboard');
+    Route::resource('articles', ArticleController::class);
 });
